@@ -21,8 +21,17 @@ pd.pivot_table(train,index = 'Pclass',values = 'Survived')
 pd.pivot_table(train,index = 'Sex',values = 'Survived')
 pd.pivot_table(train,index = 'SibSp',values = 'Survived')
 pd.pivot_table(train,index = 'Parch',values = 'Survived')
-#visualizing the data
-
+#visualizing the relation between age and survival
+g = sns.FacetGrid(train, col='Survived')
+g.map(plt.hist, 'Age', bins=20)
+#visualizing the relation between Pclass,age and sruvived 
+grid = sns.FacetGrid(train, col='Survived', row='Pclass', size=2.2, aspect=1.6)
+grid.map(plt.hist, 'Age', alpha=.5, bins=20)
+grid.add_legend();
+#visualizing the relation between embarked,Pclass,survived and sex 
+grid = sns.FacetGrid(train, row='Embarked', size=2.2, aspect=1.6)
+grid.map(sns.pointplot, 'Pclass', 'Survived', 'Sex', palette='deep')
+grid.add_legend()
 #dropping unnecessary columns
 train=train.drop(['PassengerId','Name','Ticket','Cabin'],axis=1)
 test=test.drop(['Name','Ticket','Cabin'],axis=1)
