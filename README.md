@@ -9,3 +9,4 @@ This project aims to predict whether a passenger aboard the Titanic survived or 
 7. Fit the data to various models
 8. Choose the highest scoring model
 The highest scoring model in this case was fitted to a Random Forest Classifier
+![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
